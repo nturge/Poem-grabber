@@ -1,0 +1,36 @@
+<style>
+  
+  #container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: black;
+    
+  }
+  
+  #poem{
+    color: white;
+  }
+  
+</style>
+
+<section id="container">
+  <p id="poem">poem goes here</p>
+</section>
+
+<script>
+
+  async function getData() {
+     const rawData = await fetch('https://www.poemist.com/api/v1/randompoems')
+     const poemData = await rawData.json()
+    const poemEle = document.querySelector ('#poem')
+    poemEle.innerText = poemData[0].content
+  }
+  
+  window.addEventListener('load', getData)  
+</script>
